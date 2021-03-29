@@ -1,0 +1,17 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <?php
+    echo $this->partial('layout/adminlayout/header');
+    ?>
+
+
+
+    <?php echo $this->content; ?>
+    <?php
+    echo $this->partial('layout/adminlayout/footer');
+    ?>        
+
+<?php echo $this->inlineScript() ?>
+
+</html>

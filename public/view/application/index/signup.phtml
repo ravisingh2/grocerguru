@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body ng-app="app" ng-controller="signup" ng-cloak="true">
+        <div class="login-page">
+            <div class="container"> 
+                <h3 class="w3ls-title w3ls-title1">Create your account</h3>
+                <h4 class="danger" style="color:red" ng-show="errorShow">{{errorMsg}}</h4>
+                <h4 class="danger" style="color:green" ng-show="successShow">{{successMsg}}</h4> 
+                 <div class="clearfix"> </div>
+                 <div class="login-body">
+                    <form method="post"><br/>
+<a href="<?=$this->googleLink?>"><img src="<?=$this->basePath()?>/public/images/google-g-icon-12.jpg" height="25"/><b>&nbsp;GOOGLE</b></a>
+            	&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="<?=$this->fbLoginUrl?>"><img src="<?=$this->basePath()?>/public/images/fb.png" height="30"/><b>&nbsp;FACEBOOK</b></a><br/><br/>
+            	OR<br/><br/>                    
+                        <input type="text" ng-model="signupData.name" class="user" name="name" placeholder="Enter your Name" required="">
+                        <input type="text" ng-model="signupData.email" class="user" name="email" placeholder="Enter your email" required="">
+						<input type="text" ng-model="signupData.phonecode" class="user" name="phonecode_de" style="width: 20%;float: left;border-right: none;" placeholder="+91" ng-readonly="true">
+                        <input type="text" ng-model="signupData.mobile_number" maxlength="10" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" class="user" name="mobile" placeholder="Enter your mobile number" required="" style="width:80%;">
+                        <select class="form-control select2 user" style="width: 100%;" ng-model="signupData.city_id">
+                            <option value=""> Select City</option>
+                        <?php
+                            foreach ($this->cityList as $key => $value) {
+                                echo'<option value="'.$value['id'].'">'.$value['city_name'].'</option>';
+                            }
+                        ?>
+                        </select>
+                        <input type="password" style="margin-top: 20px" ng-model="signupData.password" name="password" class="lock" placeholder="Password" required="">
+                        <input type="submit" value="Sign Up " ng-click="createaccount(signupData)">
+                        <div class="forgot-grid">
+                            <!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Remember me</label>-->
+                            <div class="forgot">
+                                <a href="#">Forgot Password?</a>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </form>
+                </div>  
+                <h6>Already have an account? <a href="<?=$this->basePath()?>/index.php/application/index/login">Login Now »</a> </h6>  
+
+                
+            </div>
+        </div>
+        <div style="position: fixed; top: 0; left: 0; background: rgba(0,0,0,0.3); z-index: 99999999; width: 100%; height: 100%;"  ng-show="ajaxLoadingData">
+            <img style="position: absolute; top: 40%; left: 45%; width: 250px; " alt="loader" src="<?=$this->basePath()?>/public/images/loading_cart.gif">
+        </div>
+        <!-- //login-page --> 
+    </body>
+</html>
+<link rel="stylesheet" type="text/css" href="<?= $this->basePath() ?>/public/css/style.css">
+<script src="<?php echo $this->basePath() . '/public/js/frontend/signup.js' ?>">
+</script>

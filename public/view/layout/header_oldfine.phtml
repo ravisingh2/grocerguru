@@ -1,0 +1,299 @@
+<head>
+    <title>Afro Basket an E-commerce Online Shopping Category</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Afro Basket Responsive web template" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Custom Theme files -->
+    <link href="<?php echo $this->basePath() ?>/public/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<?php echo $this->basePath() ?>/public/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<?php echo $this->basePath() ?>/public/css/style.css" rel="stylesheet" type="text/css" media="all" /> 
+    <link href="<?php echo $this->basePath() ?>/public/css/menu.css" rel="stylesheet" type="text/css" media="all" /> <!-- menu style --> 
+    <link href="<?php echo $this->basePath() ?>/public/css/ken-burns.css" rel="stylesheet" type="text/css" media="all" /> <!-- banner slider --> 
+    <link href="<?php echo $this->basePath() ?>/public/css/animate.min.css" rel="stylesheet" type="text/css" media="all" /> 
+    <link href="<?php echo $this->basePath() ?>/public/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- carousel slider -->  
+    <link href="<?php echo $this->basePath() ?>/public/css/slider.css" rel="stylesheet" type="text/css" media="all">    
+    <link href="<?php echo $this->basePath() ?>/public/css/location.css" rel="stylesheet" type="text/css" media="all">   
+     <link href="<?php echo $this->basePath() ?>/public/css/jquery-ui.css" rel="stylesheet" type="text/css" media="all">   
+    <!-- //Custom Theme files -->
+    <!-- font-awesome icons -->
+    <link href="<?php echo $this->basePath() ?>/public/css/font-awesome.css" rel="stylesheet"> 
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <!-- //js --> 
+    <!-- web-fonts -->
+    <!-- web-fonts --> 
+    <style> 
+        .owl-nav{position: absolute; top: 0; left: 0;width: 100%; margin: 0;}
+        .owl-carousel .owl-nav .owl-prev{position: absolute;left: -5px; top: 0; height: 300px; width: 30px; margin: 0; }
+        .owl-carousel .owl-nav .owl-next{position: absolute;right: 0px; top: 0; height: 300px; width: 30px; margin: 0;}
+        .owl-carousel .owl-item .merchant img{width: 80%;}
+        .merchant_name{font-size: 16px;}
+		.cart-column-dropdown{overflow:auto; height:300px;}		
+    </style>
+</head>
+<div ng-app="app">
+<div class="header">
+<!--    <div class="w3ls-header">header-one 
+        <div class="w3ls-header-left">
+            <p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="<?= $this->basePath() ?>/application/index/products">SHOP NOW</a></p>
+        </div>                
+        <div class="clearfix"> </div> 
+    </div>-->
+    <div class="header-two"> 
+        <div class="container no-lpad no-rpad">
+            <div class="header-logo">
+                <a href="<?=$this->basePath()?>/index.php/application/index">
+                <img src="<?php echo $this->basePath() ?>/public/images/logo-big.png" alt="logo"/> 
+                </a>
+            </div>	
+            <div class="header-city">
+                <select class="form-control select2" ng-model="city" style="width: 100%;" ng-change="setCity()" ng-init="city=<?=$GLOBALS['city']?>">
+                    <?php
+                        foreach ($GLOBALS['city_list'] as $key => $value) {
+                            echo'<option value="'.$value['id'].'">'.$value['city_name'].'</option>';
+                        }
+                    ?>
+                    </select>
+                <!--<a class="cd-dropdown-trigger" href="#" id="city-link"  style="color:#000000;">Select Your City</a>-->
+            </div>
+            <div class="header-search">
+                <form action="<?=$this->basePath()?>/index.php/application/index/product" method="post">
+                    <input type="search" name="search" placeholder="Search for a Product..." required="">
+                    <button type="submit" class="btn btn-default" aria-label="Left Align">
+                        <i class="fa fa-search" aria-hidden="true"> </i>                            
+                    </button>
+                </form>
+            </div>
+            <div class="header-cart"> 
+                <div class="dropdown my-account">
+                    <?php
+                        if(!empty($GLOBALS['user'])){
+                    ?>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> My Account <b class="caret"></b></a>
+                    <ul class="dropdown-menu multi-column columns-3 pull-right">
+                        <div class="row">
+                            <div class="multi-gd-img">
+                                <ul class="multi-column-dropdown">
+                                    <li><a href="<?=$this->basePath()?>/index.php/application/index/editprofile">Account Setting</a></li>
+                                    <li><a href="<?=$this->basePath()?>/index.php/application/index/currentorder">My Order</a></li>
+                                    <li><a href="<?=$this->basePath()?>/index.php/application/index/pastorder">Past Order </a></li>
+                                    <li><a href="<?=$this->basePath()?>/index.php/application/index/changepassword">Change Password</a></li> 
+                                    <li><a href="<?=$this->basePath()?>/index.php/application/index/logout">Log-out</a></li> 
+                                </ul>
+                            </div>
+                        </div>
+                    </ul>
+                    <?php }else{ ?>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Your Account  <b class="caret"></b></a>
+                    <ul class="dropdown-menu multi-column columns-3 pull-right">
+                        <div class="row">
+                            <div class="multi-gd-img">
+                                <ul class="multi-column-dropdown">
+                                    <li><a href="<?=$this->basePath()?>/index.php/application/index/signup">Signup</a></li>
+                                    <li><a href="<?=$this->basePath()?>/index.php/application/index/login">Login</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </ul>
+                    <?php }?>
+                </div>
+                <div class="cart" ng-controller="cartcontroller"> 
+                    <a ng-click="cartList()" class="w3view-cart" id="w3view-cart">
+					<span ng-if="totalItemInCart"> {{totalItemInCart}}</span>
+                     </a>
+                     My Cart
+                    <ul class="dropdown-menu  multi-column columns-5 pull-right w3view-cart-menu">
+                        <div class="row">
+                            <a href="#" class="w3view-cart-close">X</a>
+                            <div class="cart-gd-img">
+                                <ul class="cart-column-dropdown">
+                                    <li ng-repeat="cartItem in cartResponse.data">
+                                        <img src="{{cartResponse.imageRootPath}}/{{cartResponse.productDetails.productImageData[cartResponse.productDetails.data[cartItem.merchant_inventry_id].product_id][0].type}}/{{cartResponse.productDetails.data[cartItem.merchant_inventry_id].product_id}}/{{cartResponse.productDetails.productImageData[cartResponse.productDetails.data[cartItem.merchant_inventry_id].product_id][0].image_name}}"/>
+                                        <span class="title">{{cartItem.item_name}}<br>
+                                            <span class="item-quant">Item:  {{cartItem.number_of_item}}</span>
+                                            <i class="fa fa-plus green-text" ng-click="addToCart(cartItem.merchant_inventry_id, cartItem.item_name, 'add', 1)"></i> <i class="fa fa-minus red-text" ng-click="addToCart(cartItem.merchant_inventry_id, cartItem.item_name, 'delete', 1)"></i>
+                                        </span> <span class="price">GHC {{cartResponse.productDetails.data[cartItem.merchant_inventry_id].price}}</span>
+                                    </li>
+                                    <li ng-if="cartResponse.data">
+                                        <a class="button conti" href="<?= $this->basePath() ?>/index.php/application/index">Continue Shopping</a> 
+					<a class="button proceed" href="<?= $this->basePath() ?>/index.php/application/index/checkout" class="cart" id="cart" >Proceed To Checkout</a>
+				  </li>                                    
+                                </ul>
+                            </div>	
+                        </div>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div> 
+            </div> 
+			
+            <div class="clearfix"> </div>
+
+        </div>		
+    </div><!-- //header-two -->
+	
+<div class="clearfix"> </div>
+<?php
+if(empty($GLOBALS['hidemenu'])) {
+?>
+				<style>
+.show {
+    display: block;
+}
+.sub-header {
+    background-color: #f9f9f9;
+    position: fixed;
+    margin-top: -15px;
+    transition: -webkit-transform .5s ease-in-out;
+    transition: transform .5s ease-in-out;
+    transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out;
+    width: 100%;
+    z-index: 99;
+}
+.sub-header__wrapper {
+    background-color: #fff;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.15);
+    position: relative;
+}
+@media screen and (min-width: 1260px)
+.footer, .wrapper {
+    width: 1220px;
+}
+
+.footer, .gr-centered, .wrapper {
+    display: block!important;
+    float: none!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    clear: both!important;
+}
+
+.sub-header__section--left {
+    width: 104px;
+    max-width: 260px;
+}
+.sub-header__section--left, .sub-header__section--right {
+    display: table-cell;
+}
+
+.sub-header-details {
+    border-right: 1px solid #eee;
+    color: #333;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 46px;
+    margin-right: -1px;
+    padding-left: 36px;
+    padding-right: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list-inline, .list-unstyled {
+    list-style: none;
+    padding-left: 0;
+}
+.list-unstyled {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.cat-0-list {
+    color: #666;
+    font-size: 14px;
+    height: 47px;
+    margin-left: 17px!important;
+}
+.list-inline>li {
+    display: inline-block;
+}
+.cat-0-list__item {
+    cursor: pointer;
+    line-height: normal;
+    position: relative;display:inline-block;
+}
+.cat-0-list__item--name {
+    display: block;
+    padding: 14px 13px;font-size:14px;
+}
+.cat-0-list__item:hover{background-color:#f7f7f7}
+.cat-0-list__item--hidden{height:0;visibility:hidden}
+ 
+.cat-0-list__more-btn:after{content:"u";font-family:IconFont;font-style:normal;cursor:pointer;font-size:12px;margin-left:5px;vertical-align:sub}
+.cat-0-list__more-category{
+-webkit-overflow-scrolling:touch;background-color:#fff;border-bottom-left-radius:3px;border-bottom-right-radius:3px;box-shadow:0 2px 4px 0 rgba(0,0,0,.5);max-height:calc(100vh - 137px);overflow:scroll;position:absolute;right:0;width:200px;z-index:900; overflow-x:hidden;}
+
+.cat-0-list__more-category .more-child{border-top:1px solid #f2f2f2; width:100%;}
+.cat-0-list__more-category .more-child--first{border-top:0}.cat-0-list__more-category .more-child:last-child{border-bottom-left-radius:3px;border-bottom-right-radius:3px}.cat-0-list__more-category .cat-0-list__item--name{padding:14px 20px; font-size:14px;}
+.slider__arrow{background-color:transparent;border:none;bottom:0;color:#6e6e6e;cursor:pointer;font-size:20px;height:100%;margin:auto 0;outline:none;padding:0;position:absolute;top:0;z-index:1}
+.slider__arrow--nav{width:28px;height:28px}
+.slider__arrow--nav:before{left:50%;position:absolute;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+.slider__arrow--circle{background-color:#ccc;cursor:pointer;font-size:10px;height:28px;opacity:.7;width:28px;background-clip:padding-box;border-radius:100%;-moz-border-radius:100%;-ms-border-radius:100%;-webkit-border-radius:100%}
+.slider__arrow--circle:before{color:#fff;display:inline-block}
+@media screen and (min-width:1020px) and (max-width:1260px){.slider__arrow--circle{font-size:20px;height:42px;width:42px}}
+@media screen and (min-width:1260px){.slider__arrow--circle{font-size:20px;height:42px;width:42px}}
+.slider__arrow--bars{background-color:#ccc;color:#fff;cursor:pointer;font-size:25px;height:100%;opacity:.7;transition:background-color .1s ease-out;width:26px}
+.slider__arrow--bars.slider__arrow--right{border-bottom-right-radius:2px;border-top-right-radius:2px}
+.slider__arrow--bars.slider__arrow--left{border-bottom-left-radius:2px;border-top-left-radius:2px}
+.slider__arrow--bars:hover{background-color:rgba(0,0,0,.5);color:#fff}
+</style>
+<div class="sub-header hide@mobile">
+  <div class="sub-header__wrapper">
+    <div class="wrapper">
+      <div class="sub-header__section--left"><a class="sub-header-details" title="" href="/"><span>&nbsp;</span></a></div>
+      <div class="sub-header__section--right">
+        <?php
+            foreach($GLOBALS['category_list']['data'] as $categoryId=>$category) {
+        ?>
+        <div class="cat-0-list__item"><a class="cat-0-list__item--name" href="<?=$this->basePath()?>/index.php/application/index/product?id=<?=$categoryId?>"><?=$category['category_name']?></a></div>  
+        <?php
+            }
+        ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <?php
+}
+        if(empty($GLOBALS['city'])) {
+    ?>
+    <div class="modal" tabindex="-1" role="dialog" id="selectcity">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <select class="form-control select2" style="width: 100%;" ng-model="city" ng-change="setCity()" ng-init="city=<?=$GLOBALS['city']?>">
+                        <option value="0">Select City</option>
+                    <?php
+                        foreach ($GLOBALS['city_list'] as $key => $value) {
+                            echo'<option value="'.$value['id'].'">'.$value['city_name'].'</option>';
+                        }
+                    ?>
+                    </select>
+                </div>    
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php
+        }
+    ?>
+</div>
+<script>
+    var serverAppUrl = '<?php echo $GLOBALS['SITE_APP_URL']; ?>';
+    var city = 0;
+</script>
+<script>
+	$(document).ready(
+    function() {
+	$(".cat-0-list__more-category").hide();
+        $("#morelist").click(function() {
+            $(".cat-0-list__more-category").toggle('fast'); 
+        });
+     });
+</script>

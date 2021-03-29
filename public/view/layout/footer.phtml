@@ -1,0 +1,140 @@
+</div>  
+<div id="mobile-menu">
+    <ul>
+        <li>
+            <div class="home">
+                <a href="https://afrobaskets.com">
+                    <i class="icon-home"></i>
+                    Home
+                </a>
+            </div>
+            <!--li>
+                <a href="grid.html">Fast Food</a>
+                <ul>
+                    <li> 
+                        <a href="grid.html"><span>Wendy's Foods</span></a>
+                    </li>
+                </ul>
+            </li-->
+            <?= $GLOBALS['str'] ?>
+    </ul>
+</div>
+  <footer>
+    <!-- BEGIN INFORMATIVE FOOTER -->
+      <div class="container hidden-xs">
+       <!--div class="row"> 
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col"> 
+             Footer Payment Link 
+            <div class="payment-accept">
+              <div><img src="<?=$this->basePath()?>/public/images/payment-1.png" alt="payment1"> <img src="<?=$this->basePath()?>/public/images/payment-2.png" alt="payment2"> <img src="<?=$this->basePath()?>/public/images/payment-3.png" alt="payment3"> <img src="<?=$this->basePath()?>/public/images/payment-4.png" alt="payment4"></div>
+            </div>
+      </div-->
+      <!--footer-column-last--> 
+    </div>
+      <div class="container">
+        <div class="row">
+          <!--div class="col-sm-4 col-xs-12 col-lg-4">
+		  <div class="co-info">
+                      <div class="hidden-xs"><a href="index.html"><img src="<?=$this->basePath()?>/public/images/logo-big.png" alt="footer logo"></a></div>
+              <div class="col-xs-12">
+	 <address>
+              <div><em class="icon-location-arrow"></em> <span> No.6, First Floor, Oxford Street Above GCB bank Net to Barclays Bank Osu, Accra Ghana.</span></div>
+              <div> <em class="icon-mobile-phone"></em><span> +233553354848</span></div>
+              <div> <em class="icon-envelope"></em><span>customersupport@afrobaskets.com</span></div>
+</address>
+              </div>
+              
+            </div-->
+			</div>
+			<br/>
+			 <div class="col-sm-8 col-xs-12 col-lg-8">
+            <div class="footer-column">
+              <h4>Contact Us</h4>
+              <ul class="links">
+                <li class="first"><a> <em class="icon-mobile-phone"></em>+233553354848</a></li>
+                <li class="first"><a> <em class="icon-envelope"></em>customersupport@afrobaskets.com</a></li>
+
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h4>COMPANY</h4>
+              <ul class="links">
+                <li class="first"><a title="about us" href="<?=$this->basePath()?>/index.php/application/index/about">About Us</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4>Services</h4>
+              <ul class="links">
+                <!--li><a href="<?=$this->basePath()?>/index.php/application/index/contact">Contact Us</a></li-->
+                <li><a href="<?=$this->basePath()?>/index.php/application/index/termandconditions">Terms and Conditions</a></li>
+<!--             <li><a title="Information" href="#">Information</a></li>
+                <li><a title="Addresses" href="#">Addresses</a></li>
+                <li><a title="Addresses" href="#">Discount</a></li>
+                <li><a title="Orders History" href="#">Orders History</a></li>
+                <li class="last"><a title=" Additional Information" href="#"> Additional Information</a></li>-->
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4>Payment Methods</h4>
+              <ul class="links">
+                <li class="first"><a title="net banking" href="#">Net Banking</a></li>
+                <li><a title="cash on delivery" href="#">Cash On Delivery</a></li>
+                <li><a title="debit/credit card" href="#">Debit/Credit Card</a></li>
+        
+              </ul>
+            </div>
+            
+			
+			
+			
+          </div>
+		 
+          <!--col-sm-12 col-xs-12 col-lg-8-->
+          <!--col-xs-12 col-lg-4-->
+        </div>
+        <!--row-->
+		
+      </div>
+	  
+      <!--container-->
+    </div>
+    <!--footer-inner-->
+    
+    <div class="footer-middle">
+      <div class="container">
+        <div class="row">
+          <div class="row"> </div>
+        </div>
+        <!--row-->
+      </div>
+      <!--container-->
+    </div>
+    <!--footer-middle-->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-xs-12 coppyright">© 2020 Afro Baskets. All rights reserved</div>
+         
+        </div>
+        <!--row-->
+      </div>
+      <!--container-->
+    </div>
+    <!--footer-bottom-->
+    <!-- BEGIN SIMPLE FOOTER -->
+  </footer>
+<script>
+    <?php 
+    if(empty($GLOBALS['fcityaddress'])) {
+        
+    ?>
+    var serverAppUrl = '<?php echo $GLOBALS['SITE_APP_URL']; ?>';
+    navigator.geolocation.getCurrentPosition(showPosition);
+    function showPosition(position) {
+        getcity(position.coords.latitude, position.coords.longitude);
+    }
+    <?php
+    }
+    ?>
+</script>

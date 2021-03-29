@@ -1,0 +1,769 @@
+<div class="content">
+    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1440px;height:300px;overflow:hidden;visibility:hidden;">  
+	<div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1440px;height:300px;overflow:hidden;">        
+            		
+                    
+                        <?php
+			
+                        foreach ($this->banner['data'] as $bannerDetails) {
+                            $bannerPath = $this->banner['imageRootPath'] . "/" . $bannerDetails['image_name'];
+			   $link = "#";
+			    if($bannerDetails['link']) {
+				$link = $bannerDetails['link'];
+			    }
+                            ?>
+			    	
+                            <div><a href="<?=$link?>">
+                <img data-u="image"  src="<?=$bannerPath?>" /></a>
+            </div>
+                            <?php
+                        }
+                        ?>
+</div>
+               <div data-u="arrowleft" class="jssora051" style="width:55px;height:55px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+
+            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+
+                <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
+
+            </svg>
+
+        </div>
+
+        <div data-u="arrowright" class="jssora051" style="width:55px;height:55px;top:0px;right:25px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+
+            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+
+                <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
+
+            </svg>
+
+        </div>     
+        </div>
+    
+
+    <!--<div class="our-features-box wow bounceInUp animated animated">
+        <div class="container">
+            <ul>
+                <li>
+                    <div class="feature-box free-shipping">
+                        <div class="icon-truck"></div>
+                        <div class="content">FREE SHIPPING on order over $99</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="feature-box need-help">
+                        <div class="icon-support"></div>
+                        <div class="content">Need Help +1 800 123 1234</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="feature-box money-back">
+                        <div class="icon-money"></div>
+                        <div class="content">Money Back Guarantee</div>
+                    </div>
+                </li>
+                <li class="last">
+                    <div class="feature-box return-policy">
+                        <div class="icon-return"></div>
+                        <div class="content">30 days return Service</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>-->
+    <!--feature category slider Start-->
+    <div class="top-cate">
+        <div class="featured-pro container">
+            <div class="row">
+                <div class="slider-items-products">
+                    <div class="new_title">
+                        <h2>Featured Categories</h2>
+                    </div> 
+                    <div id="top-categories" class="product-flexslider hidden-buttons hidden-xs">
+                        <div class="slider-items slider-width-col6 products-grid">
+                            <?php
+                            foreach ($this->featureCategoryList['data'] as $featureKey=>$category) {
+                                if(!empty($this->featureCategoryList['images'][$featureKey])) {
+                                $featureImage = $this->featureCategoryList['images'][$featureKey][0];
+                                $categoryImagePath = $this->featureCategoryList['imageRootPath'].'/'.$featureImage['type'] . '/'  . $featureImage['image_name'];
+                                }else {
+                                    $categoryImageDetails = $GLOBALS['category_list']['images'][$category['category_id']][0];
+                                    $categoryImagePath = $GLOBALS['category_list']['imageRootPath'] . '/' . $categoryImageDetails['type'] . '/' . $categoryImageDetails['image_id'] . '/' . $categoryImageDetails['image_name'];
+                                    }
+                                    ?>
+                                    <div class="item">
+                                        <div class="pro-img">
+                                            <a href="<?= $this->basePath() ?>/index.php/application/index/featurecategory?feature_category_id=<?= $category['id'] ?>">
+                                                <img src="<?= $categoryImagePath ?>"  alt="<?= $category['category_name'] ?>">
+                                            </a>
+                                            <div class="pro-info"><?= $category['category_name'] ?></div>
+                                        </div>
+                                    </div>              
+                                    <?php                                
+                            }
+                            ?>
+
+                            <!-- End Item -->
+                        </div>
+                    </div>
+
+                
+
+     <table class="hidden-lg hidden-md" width="100%">
+<?php
+                           $categoryCounter = 0; 
+			   foreach ($this->featureCategoryList['data'] as $featureKey=>$category) {
+			   if(!empty($this->featureCategoryList['images'][$featureKey])) {
+                                $featureImage = $this->featureCategoryList['images'][$featureKey][0];
+                                $categoryImagePath = $this->featureCategoryList['imageRootPath'].'/'.$featureImage['type'] . '/'  . $featureImage['image_name'];
+                                }else{
+                                        $categoryImageDetails = $GLOBALS['category_list']['images'][$category['category_id']][0];
+        	                        $categoryImagePath = $GLOBALS['category_list']['imageRootPath'] . '/' . $categoryImageDetails['type'] . '/' . $categoryImageDetails['image_id'] . '/' . $categoryImageDetails['image_name'];
+        	                        }
+                                 
+
+	                          	if($categoryCounter%3==0){
+						echo "<tr>";
+					}     
+					echo "<td widht='33%' height='120' align='center'>";?>
+					   <a href="<?= $this->basePath() ?>/index.php/application/index/featurecategory?feature_category_id=<?= $category['id'] ?>">
+                                                <img width="80" height="80" src="<?= $categoryImagePath ?>"  alt="<?= $category['category_name'] ?>">
+						<div class="pro-info" style="font-size:10px;margin-top:10px;"> <?= $category['category_name'] ?></div>
+                                            </a>
+				<?php
+				        echo " </td>";
+					if($categoryCounter%3==2){
+						echo "</tr>";
+					}
+					$categoryCounter++;	
+
+                           }
+                            ?>
+	
+      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+       <!-- feature end Pro Slider -->
+    <!--Category slider Start-->
+    <div class="top-cate">
+        <div class="featured-pro container">
+            <div class="row">
+                <div class="slider-items-products">
+                    <div class="new_title">
+                        <h2>Top Categories</h2>
+                    </div> 
+                    <div id="top-categories" class="product-flexslider hidden-buttons hidden-xs">
+                        <div class="slider-items slider-width-col6 products-grid">
+                            <?php
+//echo "<pre>";print_r($GLOBALS['category_list']['data'][133]['child']);die;
+                            foreach ($GLOBALS['category_list']['data'] as $category) {
+                                if (!empty($category['top_category']) && $category['top_category'] == 'yes') {
+                                    $categoryImageDetails = $GLOBALS['category_list']['images'][$category['id']][0];
+                                    $categoryImagePath = $GLOBALS['category_list']['imageRootPath'] . '/' . $categoryImageDetails['type'] . '/' . $categoryImageDetails['image_id'] . '/' . $categoryImageDetails['image_name'];
+                                    ?>
+                                    <div class="item">
+                                        <div class="pro-img">
+                                            <a href="<?= $this->basePath() ?>/index.php/application/index/product?id=<?= $category['id'] ?>">
+                                                <img src="<?= $categoryImagePath ?>"  alt="<?= $category['category_name'] ?>">
+                                            </a>
+                                            <div class="pro-info"><?= $category['category_name'] ?></div>
+                                        </div>
+                                    </div>              
+                                    <?php
+                                }
+                            }
+                            ?>
+
+                            <!-- End Item -->
+                        </div>
+                    </div>
+                
+     <table class="hidden-lg hidden-md" width="100%">
+<?php
+                           $categoryCounter = 0; 
+			   foreach ($GLOBALS['category_list']['data'] as $category) {
+			        if (!empty($category['top_category']) && $category['top_category'] == 'yes') {
+                                        $categoryImageDetails = $GLOBALS['category_list']['images'][$category['id']][0];
+        	                        $categoryImagePath = $GLOBALS['category_list']['imageRootPath'] . '/' . $categoryImageDetails['type'] . '/' . $categoryImageDetails['image_id'] . '/' . $categoryImageDetails['image_name'];
+                                 
+
+	                          	if($categoryCounter%3==0){
+						echo "<tr>";
+					}     
+					echo "<td widht='33%' height='120' align='center'>";?>
+					   <a href="<?= $this->basePath() ?>/index.php/application/index/product?id=<?= $category['id'] ?>">
+                                                <img width="80" height="80" src="<?= $categoryImagePath ?>"  alt="<?= $category['category_name'] ?>">
+						<div class="pro-info" style="font-size:10px;margin-top:10px;"> <?= $category['category_name'] ?></div>
+                                            </a>
+				<?php
+				        echo " </td>";
+					if($categoryCounter%3==2){
+						echo "</tr>";
+					}
+					$categoryCounter++;			
+				}
+
+                           }
+                            ?>
+	
+      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Category silder End--> 
+
+   <!-- best Pro Slider -->
+    <section class=" wow bounceInUp animated">
+        <div class="best-pro slider-items-products container">
+            <div class="new_title">
+                <h2>Promotions</h2>
+            </div>
+	    <table class="hidden-md hidden-sm hidden-lg" cellspacing="5" width="100%">
+	          <?php		
+		    $imageRootPath = $this->promotionList['imageRootPath'].'/promotion/';
+		    $counter= 0;
+		 //  $rowCounter = 0;	
+                    foreach($this->promotionList['data'] as $category) {
+                        
+                        
+                        if($counter%2== 0){
+		
+                    ?>
+
+		<tr style="border-bottom:1px solid #ccc"><?php
+		
+		}
+?>
+			<td cellpadding="5" align="center"  <?php if($counter%2== 0){ ?>style="border-right:1px solid #ccc;"<?php }?>>
+<div class="item">
+                            <div class="item-inner">
+                              <div class="item-img" style="height:160px;overflow: hidden">
+                                  <div class="item-img-info"><a href="<?=$this->basePath() ?>/index.php/application/index/product?promotion_id=<?= $category['id']?>" class="product-image">
+                                        <img width="150" src="<?php echo $imageRootPath.$category[id].'/'.$this->promotionList[images][$category[id]][0][image_name] ?>"></a>
+                                  
+                                </div>
+                              </div>  
+                            </div>
+                          </div>
+</td>
+<?php if($counter%2 ==1){
+?>
+	       </tr>	
+
+		<?php
+}
+$counter++;
+if($counter==10){
+break 2;
+}
+		}
+		
+		?>	
+	   </table>	
+            <div id="best-seller" class="product-flexslider hidden-buttons hidden-xs">
+                <div class="slider-items slider-width-col4 products-grid"> 
+                    <?php
+		    
+                    foreach($this->promotionList['data'] as $category) {		
+                    ?>
+                    <div class="item">
+			<div class="item-inner">
+                              <div class="item-img" style="height:160px;overflow: hidden">
+                                  <div class="item-img-info">
+                                            <a href="<?= $this->basePath() ?>/index.php/application/index/product?promotion_id=<?= $category['id'] ?>">
+                                                <img height="160" src="<?=$imageRootPath.$category[id].'/'.$this->promotionList[images][$category[id]][0][image_name] ?>"  alt="<?= $category['promotion_name'] ?>">
+						    <div class="pro-info"><?= $category['promotion_name'] ?></div>
+                                            </a>
+                                            
+                                  </div>
+				</div>
+			  </div>	
+		   </div>	    
+			    
+                    <?php
+                        }
+                    //}
+                    ?>
+          <!-- End Item --> 
+        </div>
+      </div>
+    </div>
+    </section>
+	
+	
+	
+	
+	
+    <!-- best Pro Slider -->
+    <section class=" wow bounceInUp animated">
+        <div class="best-pro slider-items-products container">
+            <div class="new_title">
+                <h2>Hot Deals</h2><a class="viewmore" href="<?= $this->basePath() ?>/index.php/application/index/product?product_type=hotdeals"> View More</a>
+            </div>
+	    <table class="hidden-md hidden-sm hidden-lg" cellspacing="5">
+	          <?php		
+		    $counter= 0;
+		 //  $rowCounter = 0;	
+                    foreach($this->productDataList['data'] as $product) {
+                        $productImageDetails = $this->productDataList['productImageData'][$product['product_id']][0];
+                        foreach ($product['attribute'] as $value) {
+                        if($counter%2== 0){
+		
+                    ?>
+
+		<tr style="border-bottom:1px solid #ccc"><?php
+		
+		}
+?>
+			<td cellpadding="5" <?php if($counter%2== 0){ ?>style="border-right:1px solid #ccc;"<?php }?> width="150">
+<div class="item">
+                            <div class="item-inner">
+                              <div class="item-img" style="height:160px;overflow: hidden">
+                                  <div class="item-img-info"><a href="<?=$this->basePath()?>/index.php/application/index/productdetails?id=<?=$product['product_id']?>-<?=$value['attribute_id']?>" title="<?=$product['product_name']?>" class="product-image">
+                                        <img width="150
+" src="<?php echo $this->productDataList['imageRootPath'].'/'.$productImageDetails['type'].'/'.$product['product_id'].'/'.$productImageDetails['image_name']?>" alt="<?=$product['product_name']?>"></a>
+                                  
+                                </div>
+                              </div>                                 
+                              <div class="item-info" style="font-size:12px; font-weight:bold;">
+                                <div class="info-inner">
+                                  <div class="item-title" style="height:30px;margin-top:10px;"><a href="<?=$this->basePath()?>/index.php/application/index/productdetails?id=<?=$product['product_id']?>-<?=$value['attribute_id']?>" title="<?=$product['product_name']?>"><?=$product['product_name']?></a> </div>
+                                  <div class="item-content">
+										  
+                                      <select id="selectBox_{{$index}}" ng-mouseover="delete($index)" style="border:1px solid #FF3300; border-radius:4px; padding:4px; width:120px;" >
+
+                                            <?php
+                                            
+                                                echo "<option value=$value[attribute_id]>" . $value['quantity'] .$value['unit']. "</option>";
+                                            ?>
+                                                 
+                                          </select>
+                                         <div class="item-price">
+                                      		<div class="price-box">
+							<span class="regular-price" ><br/>
+								<span class="price">GHC <?=$value['actual_price']?>  
+									<?php
+									if(!empty($value['discount_value'])) {
+										echo "<br/><strike>$value[price]</strike> &nbsp;$value[discount_value]";
+										if($value['discount_type'] == 'percent') {
+											echo "%";
+										}
+										echo "off";
+									}
+									?>
+								 </span>
+							 </span>
+						 </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+</td>
+<?php if($counter%2 ==1){
+?>
+	       </tr>	
+
+		<?php
+}
+$counter++;
+if($counter==4){
+break 2;
+}
+		}
+		}
+		?>	
+	   </table>	
+            <div id="best-seller" class="product-flexslider hidden-buttons hidden-xs">
+                <div class="slider-items slider-width-col4 products-grid"> 
+                    <?php
+                    //echo "<pre>";print_r($this->productDataList);die;
+                    ///$this->productDataList[productImageData][$product[product_id][0][type]
+                    ///$product[product_id]/
+                    //$this->productDataList[productImageData][$product[product_id][0][image_name]
+                    foreach($this->productDataList['data'] as $product) {
+                        $productImageDetails = $this->productDataList['productImageData'][$product['product_id']][0];
+                        foreach ($product['attribute'] as $value) {
+                            //echo "<pre>";print_r($value);die;
+                    ?>
+                    <div class="item">
+                            <div class="item-inner">
+                              <div class="item-img" style="height:216px;overflow: hidden">
+                                  <div class="item-img-info"><a href="<?=$this->basePath()?>/index.php/application/index/productdetails?id=<?=$product['product_id']?>-<?=$value['attribute_id']?>" title="<?=$product['product_name']?>" class="product-image">
+                                        <img src="<?php echo $this->productDataList['imageRootPath'].'/'.$productImageDetails['type'].'/'.$product['product_id'].'/'.$productImageDetails['image_name']?>" alt="<?=$product['product_name']?>"></a>alt="<?=$product['product_name']?>"></a>
+alt="<?=$product['product_name']?>"></a>
+
+                                  
+                                </div>
+                              </div>                                 
+                              <div class="item-info">
+                                <div class="info-inner">
+                                  <div class="item-title"><a href="<?=$this->basePath()?>/index.php/application/index/productdetails?id=<?=$product['product_id']?>-<?=$value['attribute_id']?>" title="<?=$product['product_name']?>"><?=$product['product_name']?></a> </div>
+                                  <div class="item-content">
+                                      <select id="selectBox_{{$index}}" ng-mouseover="delete($index)" style="border:1px solid #FF3300; border-radius:4px; padding:4px; width:120px;" >
+
+                                            <?php
+                                            
+                                                echo "<option value=$value[attribute_id]>" . $value['quantity'] .$value['unit']. "</option>";
+                                            ?>
+                                                 
+                                          </select>
+					    <div class="item-price">
+							<div class="price-box">
+								<span class="regular-price" ><br/>
+									<span class="price">GHC <?=$value['actual_price']?>  
+										<?php
+										if(!empty($value['discount_value'])) {
+											echo "<br/><strike>$value[price]</strike> &nbsp;$value[discount_value]";
+											if($value['discount_type'] == 'percent') {
+												echo "%";
+											}
+											echo "off";
+										}
+										?>
+									 </span>
+								 </span>
+							 </div>
+						</div>
+                                    
+				      <div class="add_cart">
+<!--                                            <button class="button btn-cart" type="button"  ng-click="addToCart('<?= $id ?>','<?= $this->productDetails['product_name'] ?>','add', 1)" title="Add to Cart" class="button btn-cart"><span><i class="icon-basket"></i>Add to Cart</span></button>
+                                            <span ng-if="cartResponse.data['<?= $id ?>'].number_of_item">
+                                                <i class="fa fa-plus green-text" ng-click="addToCart('<?= $id ?>', '<?= $this->productDetails['product_name'] ?>', 'add', 1)"></i> 
+                                                <b>&nbsp;{{cartResponse.data['<?= $id ?>'].number_of_item}}&nbsp;</b>
+                                                <i class="fa fa-minus red-text" ng-click="addToCart('<?= $id ?>', '<?= $this->productDetails['product_name'] ?>', 'delete', 1)"></i>                       
+                                            </span>-->
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    <?php
+                        }
+                    }
+                    ?>
+          <!-- End Item --> 
+        </div>
+      </div>
+    </div>
+    </section>
+
+<section class=" wow bounceInUp animated">
+        <div class="best-pro slider-items-products container">
+            <div class="new_title">
+                <h2>New Arrivals</h2><a class="viewmore" href="<?= $this->basePath() ?>/index.php/application/index/product?product_type=new_arrival"> View More</a>
+            </div>
+	    <table class="hidden-md hidden-sm hidden-lg">
+	          <?php		
+		    $counter= 0;
+		 //  $rowCounter = 0;	
+		$this->productDataList = $this->newArrivals;
+                    foreach($this->productDataList['data'] as $product) {
+                        $productImageDetails = $this->productDataList['productImageData'][$product['product_id']][0];
+                        foreach ($product['attribute'] as $value) {
+                        if($counter%2== 0){
+		
+                    ?>
+
+		<tr><?php
+		
+		}
+?>
+			<td <?php if($counter%2== 0){ ?>style="border-right:1px solid #ccc;"<?php }?> width="150">
+<div class="item">
+                            <div class="item-inner">
+                              <div class="item-img" style="height:160px;overflow: hidden">
+                                  <div class="item-img-info"><a href="<?=$this->basePath()?>/index.php/application/index/productdetails?id=<?=$product['product_id']?>-<?=$value['attribute_id']?>" title="<?=$product['product_name']?>" class="product-image">
+                                        <img width="150
+" src="<?php echo $this->productDataList['imageRootPath'].'/'.$productImageDetails['type'].'/'.$product['product_id'].'/'.$productImageDetails['image_name']?>" alt="<?=$product['product_name']?>"></a>
+                                  
+                                </div>
+                              </div>                                 
+                              <div class="item-info" style="font-size:12px; font-weight:bold;">
+                                <div class="info-inner">
+                                  <div class="item-title" style="height:30px;margin-top:10px;"><a href="<?=$this->basePath()?>/index.php/application/index/productdetails?id=<?=$product['product_id']?>-<?=$value['attribute_id']?>" title="<?=$product['product_name']?>"><?=$product['product_name']?></a> </div>
+                                  <div class="item-content">
+                                      <select id="selectBox_{{$index}}" ng-mouseover="delete($index)" style="border:1px solid #FF3300; border-radius:4px; padding:4px; width:120px;" >
+
+                                            <?php
+                                            
+                                                echo "<option value=$value[attribute_id]>" . $value['quantity'] .$value['unit']. "</option>";
+                                            ?>
+                                                 
+                                          </select>
+                                    
+					  <div class="item-price">
+                                      		<div class="price-box">
+							<span class="regular-price" ><br/>
+								<span class="price">GHC <?=$value['actual_price']?>  
+									<?php
+									if(!empty($value['discount_value'])) {
+										echo "<br/><strike>$value[price]</strike> &nbsp;$value[discount_value]";
+										if($value['discount_type'] == 'percent') {
+											echo "%";
+										}
+										echo "off";
+									}
+									?>
+								 </span>
+							 </span>
+						 </div>
+                                        </div>
+				      <div class="add_cart">
+<!--                                            <button class="button btn-cart" type="button"  ng-click="addToCart('<?= $id ?>','<?= $this->productDetails['product_name'] ?>','add', 1)" title="Add to Cart" class="button btn-cart"><span><i class="icon-basket"></i>Add to Cart</span></button>
+                                            <span ng-if="cartResponse.data['<?= $id ?>'].number_of_item">
+                                                <i class="fa fa-plus green-text" ng-click="addToCart('<?= $id ?>', '<?= $this->productDetails['product_name'] ?>', 'add', 1)"></i> 
+                                                <b>&nbsp;{{cartResponse.data['<?= $id ?>'].number_of_item}}&nbsp;</b>
+                                                <i class="fa fa-minus red-text" ng-click="addToCart('<?= $id ?>', '<?= $this->productDetails['product_name'] ?>', 'delete', 1)"></i>                       
+                                            </span>-->
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+</td>
+<?php if($counter%2 ==1){
+?>
+	       </tr>	
+
+		<?php
+}
+$counter++;
+if($counter==4){
+break 2;
+}
+		}
+		}
+		?>	
+	   </table>	
+            <div id="best-seller" class="product-flexslider hidden-buttons hidden-xs">
+                <div class="slider-items slider-width-col4 products-grid"> 
+                    <?php
+                    //echo "<pre>";print_r($this->productDataList);die;
+                    ///$this->productDataList[productImageData][$product[product_id][0][type]
+                    ///$product[product_id]/
+                    //$this->productDataList[productImageData][$product[product_id][0][image_name]
+                    foreach($this->productDataList['data'] as $product) {
+                        $productImageDetails = $this->productDataList['productImageData'][$product['product_id']][0];
+                        foreach ($product['attribute'] as $value) {
+                            //echo "<pre>";print_r($value);die;
+                    ?>
+                    <div class="item">
+                            <div class="item-inner">
+                              <div class="item-img" style="height:216px;overflow: hidden">
+                                  <div class="item-img-info"><a href="<?=$this->basePath()?>/index.php/application/index/productdetails?id=<?=$product['product_id']?>-<?=$value['attribute_id']?>" title="<?=$product['product_name']?>" class="product-image">
+                                        <img src="<?php echo $this->productDataList['imageRootPath'].'/'.$productImageDetails['type'].'/'.$product['product_id'].'/'.$productImageDetails['image_name']?>" alt="<?=$product['product_name']?>"></a>alt="<?=$product['product_name']?>"></a>
+alt="<?=$product['product_name']?>"></a>
+
+                                  
+                                </div>
+                              </div>                                 
+                              <div class="item-info">
+                                <div class="info-inner">
+                                  <div class="item-title"><a href="<?=$this->basePath()?>/index.php/application/index/productdetails?id=<?=$product['product_id']?>-<?=$value['attribute_id']?>" title="<?=$product['product_name']?>"><?=$product['product_name']?></a> </div>
+                                  <div class="item-content">
+                                      <select id="selectBox_{{$index}}" ng-mouseover="delete($index)" style="border:1px solid #FF3300; border-radius:4px; padding:4px; width:120px;" >
+
+                                            <?php
+                                            
+                                                echo "<option value=$value[attribute_id]>" . $value['quantity'] .$value['unit']. "</option>";
+                                            ?>
+                                                 
+                                          </select>
+                                    
+                                   	  <div class="item-price">
+                                      		<div class="price-box">
+							<span class="regular-price" ><br/>
+								<span class="price">GHC <?=$value['actual_price']?>  
+									<?php
+									if(!empty($value['discount_value'])) {
+										echo "<br/><strike>$value[price]</strike> &nbsp;$value[discount_value]";
+										if($value['discount_type'] == 'percent') {
+											echo "%";
+										}
+										echo "off";
+									}
+									?>
+								 </span>
+							 </span>
+						 </div>
+                                          </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    <?php
+                        }
+                    }
+                    ?>
+          <!-- End Item --> 
+        </div>
+      </div>
+    </div>
+    </section>
+
+<!--Category slider Start-->
+    <div class="top-cate">
+        <div class="featured-pro container">
+            <div class="row">
+                <div class="slider-items-products">
+                    <div class="new_title">
+                        <h2>Shop By Store</h2>
+                    </div> 
+                    <div id="top-categories" class="product-flexslider hidden-buttons">
+                        <div class="slider-items slider-width-col6 products-grid">
+                            <?php 
+                           foreach ($this->marchantList['data']  as $merchantDetail) {
+					
+				 $imageId = $merchantDetail['id'];
+                                    ?>
+                                    <div class="item">
+                                        <div class="pro-img">
+				          <a href="<?= $this->basePath() ?>/index.php/application/index/product?merchant=<?= $merchantDetail['user_id'] ?>">   
+					     <img style="border:0px;" src="<?=$this->marchantList['images'][$imageId]?>" alt="No Image"/>	    
+                                             <!--div class="pro-info"><?= $merchantDetail['first_name'] ?></div-->
+				          </a>
+                                        </div>
+                                    </div>              
+                                    <?php
+                                
+                            }
+                            ?>
+
+                            <!-- End Item -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Category silder End--> 
+
+</div>
+    <!-- #region Jssor Slider Begin -->
+    <!-- Generator: Jssor Slider Composer -->
+    <!-- Source: https://www.jssor.com/demos/image-slider.slider/=edit -->
+    <script src="/public/js/jssor.slider-28.0.0.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.jssor_1_slider_init = function() {
+
+            var jssor_1_SlideoTransitions = [
+              [{b:500,d:1000,x:0,e:{x:6}}],
+              [{b:-1,d:1,x:100,p:{x:{d:1,dO:9}}},{b:0,d:2000,x:0,e:{x:6},p:{x:{dl:0.1}}}],
+              [{b:-1,d:1,x:200,p:{x:{d:1,dO:9}}},{b:0,d:2000,x:0,e:{x:6},p:{x:{dl:0.1}}}],
+              [{b:-1,d:1,rX:20,rY:90},{b:0,d:4000,rX:0,e:{rX:1}}],
+              [{b:-1,d:1,rY:-20},{b:0,d:4000,rY:-90,e:{rY:7}}],
+              [{b:-1,d:1,sX:2,sY:2},{b:1000,d:3000,sX:1,sY:1,e:{sX:1,sY:1}}],
+              [{b:-1,d:1,sX:2,sY:2},{b:1000,d:5000,sX:1,sY:1,e:{sX:3,sY:3}}],
+              [{b:-1,d:1,tZ:300},{b:0,d:2000,o:1},{b:3500,d:3500,tZ:0,e:{tZ:1}}],
+              [{b:-1,d:1,x:20,p:{x:{o:33,r:0.5}}},{b:0,d:1000,x:0,o:0.5,e:{x:3,o:1},p:{x:{dl:0.05,o:33},o:{dl:0.02,o:68,rd:2}}},{b:1000,d:1000,o:1,e:{o:1},p:{o:{dl:0.05,o:68,rd:2}}}],
+              [{b:-1,d:1,da:[0,700]},{b:0,d:600,da:[700,700],e:{da:1}}],
+              [{b:600,d:1000,o:0.4}],
+              [{b:-1,d:1,da:[0,400]},{b:200,d:600,da:[400,400],e:{da:1}}],
+              [{b:800,d:1000,o:0.4}],
+              [{b:-1,d:1,sX:1.1,sY:1.1},{b:0,d:1600,o:1},{b:1600,d:5000,sX:0.9,sY:0.9,e:{sX:1,sY:1}}],
+              [{b:0,d:1000,o:1,p:{o:{o:4}}}],
+              [{b:1000,d:1000,o:1,p:{o:{o:4}}}]
+            ];
+
+            var jssor_1_options = {
+              $AutoPlay: 1,
+              $CaptionSliderOptions: {
+                $Class: $JssorCaptionSlideo$,
+                $Transitions: jssor_1_SlideoTransitions
+              },
+              $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+              },
+              $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$,
+                $SpacingX: 16,
+                $SpacingY: 16
+              }
+            };
+
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+            /*#region responsive code begin*/
+
+            var MAX_WIDTH = 1440;
+
+            function ScaleSlider() {
+                var containerElement = jssor_1_slider.$Elmt.parentNode;
+                var containerWidth = containerElement.clientWidth;
+
+                if (containerWidth) {
+
+                    var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+
+                    jssor_1_slider.$ScaleWidth(expectedWidth);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+
+            ScaleSlider();
+
+            $Jssor$.$AddEvent(window, "load", ScaleSlider);
+            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+            /*#endregion responsive code end*/
+        };
+    </script>
+<link href="//fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&subset=latin-ext,cyrillic-ext,vietnamese,latin,cyrillic" rel="stylesheet" type="text/css" />
+    <link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,regular,italic,700,700italic&subset=latin-ext,greek-ext,cyrillic-ext,greek,vietnamese,latin,cyrillic" rel="stylesheet" type="text/css" />
+    <style>
+        /*jssor slider loading skin double-tail-spin css*/
+        .jssorl-004-double-tail-spin img {
+            animation-name: jssorl-004-double-tail-spin;
+            animation-duration: 1.6s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes jssorl-004-double-tail-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /*jssor slider bullet skin 031 css*/
+        .jssorb031 {position:absolute;}
+        .jssorb031 .i {position:absolute;cursor:pointer;}
+        .jssorb031 .i .b {fill:#000;fill-opacity:0.6;stroke:#fff;stroke-width:1600;stroke-miterlimit:10;stroke-opacity:0.8;}
+        .jssorb031 .i:hover .b {fill:#fff;fill-opacity:1;stroke:#000;stroke-opacity:1;}
+        .jssorb031 .iav .b {fill:#fff;stroke:#000;stroke-width:1600;fill-opacity:.6;}
+        .jssorb031 .i.idn {opacity:.3;}
+
+        /*jssor slider arrow skin 051 css*/
+        .jssora051 {display:block;position:absolute;cursor:pointer;}
+        .jssora051 .a {fill:none;stroke:#fff;stroke-width:360;stroke-miterlimit:10;}
+        .jssora051:hover {opacity:.8;}
+        .jssora051.jssora051dn {opacity:.5;}
+        .jssora051.jssora051ds {opacity:.3;pointer-events:none;}
+    </style>
+
+<style>
+    .ex1{
+         margin-top:auto;
+/*        margin-right: 150px;
+        margin-bottom: 25px;
+        margin-left: 45px;*/
+    }
+</style>
+
+
+
+    <script type="text/javascript">jssor_1_slider_init();
+    </script>
