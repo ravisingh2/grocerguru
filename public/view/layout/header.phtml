@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="facebook-domain-verification" content="04y7hwtxtyk2mauji57jk112qywfko" />
-        <title>Afrobaskets</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Kirana Kings</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <meta name="description" content="Default Description">
         <meta name="keywords" content="fashion, store, E-commerce">
@@ -44,7 +44,7 @@
         <script type="text/javascript" src="<?= $this->basePath() ?>/public/js/jquery.bxslider.min.js"></script>
         <script type="text/javascript" src="<?= $this->basePath() ?>/public/js/owl.carousel.min.js"></script>
         <script type="text/javascript" src="<?= $this->basePath() ?>/public/js/jquery.mobile-menu.min.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCneJAKb3o_UqKuVoIBPcTlWJLzNt6lTqo&libraries=places"></script>
+        <!--script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCneJAKb3o_UqKuVoIBPcTlWJLzNt6lTqo&libraries=places"></script-->
     </head>
     <body>    
         <div id="page"  ng-app="app">
@@ -69,8 +69,8 @@
                 <div id="header">
                     <div class="header-container container">
                         <div class="row">
-                            <div class="logo"> <a href="https://afrobaskets.com">
-                                    <img src="<?= $this->basePath() ?>/public/images/logo-big.png" alt="afrobaskets Store">
+                            <div class="logo"> <a href="https://kiranakings.com">
+                                    <img src="<?= $this->basePath() ?>/public/images/logo-big.png" alt="kirana kings">
                                 </a> </div>
 
                             <div class="fl-nav-menu">
@@ -96,7 +96,7 @@
                                                     }
                                                     ?> 
                                                     <li class="mega-menu"> 
-                                                        <a class="level-top" href="<?= $this->basePath() ?>/index.php/application/index/product?id=<?= $category['id'] ?>">
+                                                        <a class="level-top" href="<?= $this->basePath() ?>/application/index/product?id=<?= $category['id'] ?>">
                                                             <span>
                                                                 <?php
                                                                 echo $category['category_name'];
@@ -104,7 +104,7 @@
                                                             </span>
                                                         </a>
                                                         <?php
-                                                        $GLOBALS['str'] .= '<li> <a href="' . $this->basePath() . '/index.php/application/index/product?id=' . $category['id'] . '"><span>' . $category['category_name'] . '</span></a>';
+                                                        $GLOBALS['str'] .= '<li> <a href="' . $this->basePath() . '/application/index/product?id=' . $category['id'] . '"><span>' . $category['category_name'] . '</span></a>';
                                                         if (!empty($category['child'])) {
                                                             ?>
                                                             <div class="level0-wrapper dropdown-6col" style="left: 0px; display: none;">
@@ -118,9 +118,9 @@
                                                                                     $GLOBALS['str'] .= "<ul>";
 
                                                                                     foreach ($category['child'] as $childcategory) {
-                                                                                        $GLOBALS['str'] .= '<li> <a href="' . $this->basePath() . '/index.php/application/index/product?id=' . $childcategory['id'] . '"><span>' . $childcategory['category_name'] . '</span></a> </li>';
+                                                                                        $GLOBALS['str'] .= '<li> <a href="' . $this->basePath() . '/application/index/product?id=' . $childcategory['id'] . '"><span>' . $childcategory['category_name'] . '</span></a> </li>';
                                                                                         ?>  
-                                                                                        <li class="level3 nav-6-1 parent item"> <a href="<?= $this->basePath() ?>/index.php/application/index/product?id=<?= $childcategory['id'] ?>"><span><?= $childcategory['category_name'] ?></span></a>
+                                                                                        <li class="level3 nav-6-1 parent item"> <a href="<?= $this->basePath() ?>/application/index/product?id=<?= $childcategory['id'] ?>"><span><?= $childcategory['category_name'] ?></span></a>
 
                                                                                         </li>
                                                                                         <?php
@@ -175,16 +175,16 @@
                                                 <?php
                                                 if (!empty($GLOBALS['user'])) {
                                                     ?>
-                                                    <li><a href="<?= $this->basePath() ?>/index.php/application/index/editprofile" title="My Account">My Account</a></li>                                                                                                
-                                                    <li><a href="<?= $this->basePath() ?>/index.php/application/index/changepassword">Change Password</a></li> 
-                                                    <li><a href="<?= $this->basePath() ?>/index.php/application/index/currentorder">My Order</a></li>
-                                                    <li><a href="<?= $this->basePath() ?>/index.php/application/index/checkout" title="Checkout">Checkout</a></li>
-                                                    <li><a href="<?= $this->basePath() ?>/index.php/application/index/logout">Log-out</a></li> 
+                                                    <li><a href="<?= $this->basePath() ?>/application/index/editprofile" title="My Account">My Account</a></li>                                                                                                
+                                                    <li><a href="<?= $this->basePath() ?>/application/index/changepassword">Change Password</a></li> 
+                                                    <li><a href="<?= $this->basePath() ?>/application/index/currentorder">My Order</a></li>
+                                                    <li><a href="<?= $this->basePath() ?>/application/index/checkout" title="Checkout">Checkout</a></li>
+                                                    <li><a href="<?= $this->basePath() ?>/application/index/logout">Log-out</a></li> 
                                                 <?php } else { ?>
                                                 </ul>
                                                 <ul class="links">
-                                                    <li><a href="<?= $this->basePath() ?>/index.php/application/index/signup">Signup</a></li>
-                                                    <li class="last"><a href="<?= $this->basePath() ?>/index.php/application/index/login" title="Login"><span>Login</span></a></li>
+                                                    <li><a href="<?= $this->basePath() ?>/application/index/signup">Signup</a></li>
+                                                    <li class="last"><a href="<?= $this->basePath() ?>/application/index/login" title="Login"><span>Login</span></a></li>
                                                 </ul>
                                             <?php } ?>
                                         </div>
@@ -226,7 +226,7 @@
 
                                             </ul>
                                             <div class="actions" ng-if="totalItemInCart">
-                                                <button class="btn-checkout"  type="button" onClick="window.location = '<?= $this->basePath() ?>/index.php/application/index/checkout'"> <span>Checkout</span> </button>
+                                                <button class="btn-checkout"  type="button" onClick="window.location = '<?= $this->basePath() ?>/application/index/checkout'"> <span>Checkout</span> </button>
                                             </div>
                                             <!--actions-->
                                         </div>
@@ -235,7 +235,7 @@
                                 </div>
                                 <!--mini-cart-->
                                 <div class="navbar-collapse hidden-sm hidden-xs">
-                                    <form class="navbar-form" role="search" action="<?=$this->basePath()?>/index.php/application/index/product" method="post">
+                                    <form class="navbar-form" role="search" action="<?=$this->basePath()?>/application/index/product" method="post">
                                         <div class="input-group">
                                             <input type="text" id="myInput" class="form-control" placeholder="Search" ng-model="searchItem" name="search" ng-change="getProductList('myInput')" autocomplete="off">
                                             
@@ -248,7 +248,7 @@
                             </div>
                         </div>
                                 <div class="hidden-lg hidden-md">
-                                    <form class="navbar-form" role="search" action="<?=$this->basePath()?>/index.php/application/index/product" method="post">
+                                    <form class="navbar-form" role="search" action="<?=$this->basePath()?>/application/index/product" method="post">
                                         
                                             <input type="text" id="myInput1" class="form-control col-sm-12 col-xs-12" placeholder="Search for products, Brands and More" ng-model="searchItem" name="search" ng-change="getProductList('myInput1')" autocomplete="off">
 
